@@ -1,0 +1,15 @@
+# Secrets / credentials – never commit
+.env
+*.env
+credentials*.json
+*.pem
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Exports with real data
+exports/
+*.real.csv
