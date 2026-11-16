@@ -1,0 +1,8 @@
+#,Test,Full Name,Email,Course,Score,Expected result
+1,Valid new request,Mona Adel,mona.adel@example.com,Data Analysis,88,Certificate is issued; a row is added with status=issued and template_version=v2
+2,Duplicate (idempotency),Ahmed Hassan,ahmed.hassan@example.com,AI Automation,92,"Skip Duplicate: no certificate, no new row"
+3,Duplicate with different casing/spaces,Ahmed Hassan,  Ahmed.Hassan@Example.com ,AI Automation,92,Same cert_id after normalization → Skip Duplicate
+4,"Same person, different course",Ahmed Hassan,ahmed.hassan@example.com,Digital Marketing,79,Different cert_id → a new certificate is issued
+5,Score below passing mark,Sherif Mounir,sherif.mounir@example.com,Data Analysis,50,"status=rejected, error: Score below passing mark (60)"
+6,Re-submit a stuck request,Hana Tarek,hana.tarek@example.com,AI Automation,81,Row is pending (not issued) → issuing completes and status becomes issued
+7,Invalid email,Reem Sayed,reem.sayed.example.com,Digital Marketing,80,"The form email field may block it; if it passes, it is logged as rejected"
